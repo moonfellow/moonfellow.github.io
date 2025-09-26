@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mackenzie duan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 🔧 Responsive root font size — scales with screen width */
+    html {
+      font-size: clamp(1rem, 2vw + 0.2rem, 1.25rem); 
+      /* = min 16px, max ~20px depending on screen */
+    }
+
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      color: black;
+      margin: 2.5rem;
+      font-size: 1rem; /* = 1rem = responsive */
+      font-weight: normal;
+    }
+
+site-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: none; */
+  margin-bottom: 1rem;
+}
+
+    nav {
+      margin-bottom: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      margin-right: 1.25rem;
+      text-transform: lowercase;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h1 {
+      text-transform: lowercase;
+      font-size: 1.5rem; /* ~24px at max size */
+      font-weight: bold;
+    }
+
+    a.link {
+      color: black;
+      text-decoration: underline;
+    }
+
+    a.link:hover {
+      text-decoration: none;
+    }
+
+    p {
+      max-width: 37.5rem; /* 600px */
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    br {
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2 class="site-title">Mackenzie Lucy Duan</h2>
+  </header>
+
+  <nav>
+    <a onclick="showSection('about')">about</a>
+    <a onclick="showSection('writing')">writing</a>
+    <a onclick="showSection('research')">research</a>
+    <a onclick="showSection('projects')">projects</a>
+    <a onclick="showSection('contact')">contact</a>
+  </nav>
+
+  <section id="about" class="active">
+    <h1>about</h1>
+    <p>Hi, I'm an undergraduate studying History and Politics at the University of Cambridge. I’m interested in political economy, nationalism, late socialism, Chinese politics, and Russian literature. I also like movies.<br><br>
+<a class="link" href="https://letterboxd.com/meikanjian/" target="_blank" rel="noopener noreferrer">My Letterboxd :)</a><br>
+</p>
+  </section>
+
+  <section id="writing">
+    <h1>writing</h1>
+    <p><strong>miscellaneous:</strong></p>
+    <p>
+      <a class="link" href="https://mailchi.mp/412c0740c72f/co-sine-mackenzie-chen-jo-hsi?e=[UNIQID]" target="_blank" rel="noopener noreferrer">
+        On Lineage, Weird Coincidences, and The Execution of Mayor Yin
+      </a><br><br>
+      <a class="link" href="https://mailchi.mp/412c0740c72f/co-sine-mackenzie-chen-jo-hsi?e=[UNIQID]" target="_blank" rel="noopener noreferrer">
+        Some thoughts on war movies and close brushes with patriotism
+      </a>
+    </p>
+    <p><strong>select poems:</strong></p>
+    <p>
+      <a class="link" href="https://theadroitjournal.org/issue-fifty-one/mackenzie-duan/" target="_blank" rel="noopener noreferrer">Aphelion</a><br>
+      <a class="link" href="https://sundoglit.com/Mackenzie-Duan/" target="_blank" rel="noopener noreferrer">California, November</a><br>
+      <a class="link" href="https://www.surgingtidemag.com/shortform/two-poems5871211" target="_blank" rel="noopener noreferrer">Eyeline, Advice from Co-Star</a>
+    </p>
+  </section>
+
+  <section id="research">
+    <h1>research</h1>
+    <p>Currently assisting Jiali Li with her research on consumer nationalist protests in China.</p>
+    <br>
+    <p><strong>other experience:</strong></p>
+    <p>
+      Web assistant @ Sine Theta Magazine<br>
+      Volunteer @ East Bay Food Not Bombs
+    </p>
+  </section>
+
+  <section id="projects">
+    <h1>projects</h1>
+    <p>Co-directing a play I wrote. Slated for November.<br><br>
+Currently working on a novel about guns and cars.
+<a class="link" href="https://docs.google.com/document/d/1CUkctc437gphiSUBAmR4vvtOWxyMHJPWaCETadpeqVE/edit?usp=sharing" rel="noopener noreferrer">
+        Here’s a snippet.
+      </a>
+</p>
+  </section>
+
+  <section id="contact">
+    <h1>contact</h1>
+    <p>
+      mackenzielucyduan@gmail.com<br>
+      md2085@cam.ac.uk
+    </p>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
