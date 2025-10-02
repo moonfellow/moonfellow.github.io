@@ -1,12 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crest Generator</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.description {
+    font-size: 1rem;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+button:hover { opacity: 0.9; }
+#output {
+    background-color: #f4f4f4;
+    color: black;
+    padding: 1rem;
+    width: 90%;
+    max-width: 700px;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    border-radius: 0;
+}
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    .description { font-size: 0.9rem; }
+    button { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<h1>Crest Generator</h1>
+<p class="description">
+A GPT-2 model fine-tuned on song lyrics from Blade and Ecco2k's 2022 album CREST.
+</p>
+
 <button id="generate-btn">generate!</button>
+
 <pre id="output"></pre>
 
 <script>
 const SPACE_API_URL = "https://moonfellow-crestgenerator.hf.space/run/predict";
 
+// helper function to strip punctuation
+function stripPunctuation(text) {
+    return text.replace(/[!"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~]/g, "");
+}
+
 document.getElementById("generate-btn").addEventListener("click", async () => {
     const outputEl = document.getElementById("output");
     outputEl.textContent = "Generating...";
+
     try {
         const response = await fetch(SPACE_API_URL, {
             method: "POST",
@@ -14,10 +84,18 @@ document.getElementById("generate-btn").addEventListener("click", async () => {
             body: JSON.stringify({ data: ["\n"] })
         });
         const result = await response.json();
-        const text = result.data?.[0]?.[0] || "No output received";
+
+        // usually Spaces return nested array, adjust if necessary
+        let text = result.data?.[0]?.[0] || "No output received";
+        text = stripPunctuation(text);
+
         outputEl.textContent = text;
+
     } catch (err) {
         outputEl.textContent = "Error: " + err.message;
     }
 });
 </script>
+
+</body>
+</html>
