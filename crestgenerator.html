@@ -2,28 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>crest text generator</title>
+<title>crest generator</title>
 
-<!-- Load Gradio Web Component -->
+<!-- Gradio Web Component -->
 <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.48.0/gradio.js"></script>
 
 <style>
-html { font-size: 16px; }
-body { font-family: Arial, sans-serif; margin: 2rem; background: #fafafa; color: #333; }
-h1 { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
-.container { text-align: center; }
-gradio-app { width: 100%; max-width: 850px; height: 600px; margin: 0 auto; display: block; }
-p { margin-top: 2rem; text-align: center; }
+/* General page styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Heading removed, minimal look */
+h1 {
+    display: none;
+}
+
+/* Container for the generator */
+.generator-container {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Make gradio-app responsive */
+gradio-app {
+    width: 100%;
+    height: 700px; /* adjust height if needed */
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 0; /* no curves */
+}
+
+/* Back link styling */
+.back-link {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
 </style>
 </head>
 <body>
 
-<h1>crest text generator</h1>
-
-<div class="container">
+<div class="generator-container">
     <!-- Embed your Hugging Face Space -->
     <gradio-app src="https://moonfellow-crestgenerator.hf.space"></gradio-app>
+
+    <!-- Optional back link -->
+    <a href="index.html" class="back-link">back :3</a>
 </div>
 
+</body>
+</html>
 </body>
 </html>
