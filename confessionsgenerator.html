@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>confessions generator</title>
+<title>Confessions Generator</title>
 <style>
 html { font-size: 16px; } /* 1rem = 16px */
 body { font-family: Arial, sans-serif; margin: 2rem; background: #fafafa; color: #333; }
@@ -14,24 +14,22 @@ pre { background: #f4f4f4; padding: 1rem; white-space: pre-wrap; font-size: 1rem
 </head>
 <body>
 
-<h1>confessions generator</h1>
+<h1>Confessions Generator</h1>
 <div class="container">
-    <button onclick="generateText()">generate!</button>
+    <button onclick="generateText()">Generate!</button>
     <pre id="output"></pre>
 </div>
 
 <script>
-const HF_MODEL_URL = ;
-
 async function generateText() {
     const outputEl = document.getElementById("output");
-    outputEl.textContent = "generating...";
+    outputEl.textContent = "Generating...";
 
     try {
         const response = await fetch("https://api-inference.huggingface.co/models/moonfellow/confessionstextgenerator", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${"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"}`,
+                "Authorization": "Bearer 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",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ inputs: "" }) // empty prompt
@@ -40,7 +38,7 @@ async function generateText() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
 
-        // result usually looks like: [{ generated_text: "..." }]
+        // Hugging Face API returns [{ generated_text: "..." }]
         outputEl.textContent = result[0]?.generated_text || JSON.stringify(result);
     } catch (err) {
         outputEl.textContent = "Error: " + err.message;
