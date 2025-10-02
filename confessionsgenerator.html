@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Confessions Generator</title>
+<title>confessions generator</title>
 <style>
 html { font-size: 16px; } /* 1rem = 16px */
 body { font-family: Arial, sans-serif; margin: 2rem; background: #fafafa; color: #333; }
@@ -14,22 +14,28 @@ pre { background: #f4f4f4; padding: 1rem; white-space: pre-wrap; font-size: 1rem
 </head>
 <body>
 
-<h1>Confessions Generator</h1>
+<h1>confessions generator</h1>
 <div class="container">
     <button onclick="generateText()">Generate!</button>
     <pre id="output"></pre>
+    <p style="margin-top: 2rem; text-align: center;">
+        <a href="index.html">Back :3</a>
+    </p>
 </div>
 
 <script>
+const HF_API_TOKEN = "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"; // ⚠️ exposed in frontend!
+const HF_MODEL_URL = "https://api-inference.huggingface.co/models/moonfellow/confessionstextgenerator";
+    
 async function generateText() {
     const outputEl = document.getElementById("output");
     outputEl.textContent = "Generating...";
 
     try {
-        const response = await fetch("https://api-inference.huggingface.co/models/moonfellow/confessionstextgenerator", {
+        const response = await fetch(HF_MODEL_URL, {
             method: "POST",
             headers: {
-                "Authorization": "Bearer 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",
+                "Authorization": `Bearer ${HF_API_TOKEN}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ inputs: "" }) // empty prompt
