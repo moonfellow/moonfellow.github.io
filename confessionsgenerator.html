@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>confessions text generator</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 2rem; 
-            background: #fafafa;
-            color: #333;
-        }
-        h1 { 
-            font-size: 1.5rem; 
-            margin-bottom: 1rem; 
-            text-align: center;
-        }
-        .generator-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 1rem;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            border-radius: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>confessions generator</title>
+<style>
+html { font-size: 16px; } /* 1rem = 16px */
+body { font-family: Arial, sans-serif; margin: 2rem; background: #fafafa; color: #333; }
+h1 { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
+button { font-size: 1rem; padding: 0.5rem 1rem; margin-bottom: 1rem; border-radius: 0.25rem; cursor: pointer; }
+pre { background: #f4f4f4; padding: 1rem; white-space: pre-wrap; font-size: 1rem; border-radius: 0.25rem; max-width: 40rem; margin: 0 auto; }
+.container { text-align: center; }
+</style>
 </head>
 <body>
 
 <h1>confessions generator</h1>
-
-<div class="generator-container">
-    <!-- Hugging Face Space embedded here -->
-    <iframe 
-        src="https://huggingface.co/spaces/moonfellow/confessionstextgenerator?embed=true"
-        allow="fullscreen"
-    ></iframe>
+<div class="container">
+    <button onclick="generateText()">Generate!</button>
+    <pre id="output"></pre>
 </div>
+
+<script>
+const HF_API_TOKEN = "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";
+const HF_MODEL_URL = "https://api-inference.huggingface.co/models/moonfellow/confessionstextgenerator";
+
+async function generateText() {
+    const outputEl = document.getElementById("output");
+    outputEl.textContent = "generating...";
+
+    try {
+        const response = await fetch(HF_MODEL_URL, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${HF_API_TOKEN}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ inputs: "" }) // empty prompt
+        });
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+
+        // result usually looks like: [{ generated_text: "..." }]
+        outputEl.textContent = result[0]?.generated_text || JSON.stringify(result);
+    } catch (err) {
+        outputEl.textContent = "Error: " + err.message;
+    }
+}
+</script>
 
 </body>
 </html>
