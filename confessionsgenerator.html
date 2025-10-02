@@ -2,46 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>confessions text generator</title>
+    <title>Confessions Text Generator</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 2rem; }
-        button { margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 1rem; }
-        pre { background: #f4f4f4; padding: 1rem; white-space: pre-wrap; font-size: 1rem; }
-        h1 { font-size: 1rem; margin-bottom: 1rem; }
-        h2 { font-size: 0.7rem; margin-top: 1.5rem; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 2rem; 
+            background: #fafafa;
+            color: #333;
+        }
+        h1 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem; 
+            text-align: center;
+        }
+        .generator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
 
-<h1>confessions text generator</h1>
+<h1>Confessions Text Generator</h1>
 
-<button onclick="generateText()">generate!</button>
-
-<h2>output:</h2>
-<pre id="output"></pre>
-
-<script>
-const GRADIO_URL = "https://huggingface.co/spaces/moonfellow/confessionstextgenerator/run/predict";
-
-async function generateText() {
-    const outputEl = document.getElementById("output");
-    outputEl.textContent = "generating...";
-
-    try {
-        const response = await fetch(GRADIO_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ data: [""] }) // always empty prompt
-        });
-
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const result = await response.json();
-        outputEl.textContent = result.data[0];
-    } catch (err) {
-        outputEl.textContent = "Error: " + err.message;
-    }
-}
-</script>
+<div class="generator-container">
+    <!-- Hugging Face Space embedded here -->
+    <iframe 
+        src="https://huggingface.co/spaces/moonfellow/confessionstextgenerator?embed=true"
+        allow="fullscreen"
+    ></iframe>
+</div>
 
 </body>
 </html>
