@@ -4,29 +4,21 @@
   <meta charset="UTF-8">
   <title>Mackenzie Duan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mackenzie Duan">
+  <meta name="description" content="Mackenzie Duan">
   <style>
-    /* 🔧 Responsive root font size — scales with screen width */
-    html {
-      font-size: clamp(1rem, 2vw + 0.2rem, 1.25rem); 
-      /* = min 16px, max ~20px depending on screen */
-    }
-
+    /* --- General Styling --- */
     body {
-      background-color: white;
-      font-family: Arial, sans-serif;
-      color: black;
+      background: linear-gradient(135deg, #f7f0ff, #cce7ff); /* pastel gradient for artsy vibe */
+      font-family: "Times New Roman", serif;
+      color: #222;
       margin: 2.5rem;
-      font-size: 0.7rem; /* = 1rem = responsive */
-      font-weight: normal;
+      font-size: 0.9rem;
     }
 
-site-title {
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: none; */
-  margin-bottom: 1rem;
-}
+    h1, h2 {
+      font-weight: bold;
+      text-transform: lowercase;
+    }
 
     nav {
       margin-bottom: 2.5rem;
@@ -34,15 +26,15 @@ site-title {
 
     nav a {
       text-decoration: none;
-      color: black;
+      color: #444;
       margin-right: 1.25rem;
       text-transform: lowercase;
       cursor: pointer;
-      font-size: 0.7rem;
     }
 
     nav a:hover {
       text-decoration: underline;
+      color: #005577;
     }
 
     section {
@@ -53,14 +45,8 @@ site-title {
       display: block;
     }
 
-    h1 {
-      text-transform: lowercase;
-      font-size: 0.7rem; /* ~24px at max size */
-      font-weight: bold;
-    }
-
     a.link {
-      color: black;
+      color: #005577;
       text-decoration: underline;
     }
 
@@ -69,13 +55,43 @@ site-title {
     }
 
     p {
-      max-width: 37.5rem; /* 600px */
-      line-height: 1;
-      font-size: 0.7rem;
+      max-width: 600px;
+      line-height: 1.4;
     }
 
-    br {
-      line-height: 2;
+    /* --- Shark Animation --- */
+    .shark-container {
+      position: relative;
+      margin-top: 1.5rem;
+      height: 100px; /* space for sharks */
+      overflow: hidden;
+    }
+
+    .shark {
+      position: absolute;
+      top: 20px;
+      left: 100%;
+      width: 80px;
+      cursor: pointer;
+      animation: swim 15s linear infinite;
+    }
+
+    .shark:nth-child(2) {
+      top: 50px;
+      animation-delay: 7s;
+      animation-duration: 18s;
+    }
+
+    @keyframes swim {
+      from { left: 100%; }
+      to { left: -120px; }
+    }
+
+    .tap-glass {
+      font-size: 0.8rem;
+      color: #333;
+      margin-top: 0.5rem;
+      font-style: italic;
     }
   </style>
 </head>
@@ -96,9 +112,17 @@ site-title {
 
   <section id="about" class="active">
     <h1>about</h1>
-    <p>Hi, I'm an undergraduate at the University of Cambridge. I’m interested in political economy, nationalism, Chinese history and politics, and Russian literature. I also like Don DeLillo.<br><br>
-<a class="link" href="https://letterboxd.com/meikanjian/" target="_blank" rel="noopener noreferrer">My Letterboxd :)</a><br>
-</p>
+    <p>
+      Hi, I'm an undergraduate at the University of Cambridge. I’m interested in political economy, nationalism, Chinese history and politics, and Russian literature. I also like Don DeLillo.<br><br>
+      <a class="link" href="https://letterboxd.com/meikanjian/" target="_blank" rel="noopener noreferrer">My Letterboxd :)</a>
+    </p>
+
+    <!-- Sharks -->
+    <div class="shark-container">
+      <img src="shark.png" alt="shark" class="shark" onclick="tapGlass()">
+      <img src="shark.png" alt="shark" class="shark" onclick="tapGlass()">
+    </div>
+    <div class="tap-glass">tap the glass →</div>
   </section>
 
   <section id="writing">
@@ -115,30 +139,33 @@ site-title {
     <p><strong>poetry:</strong></p>
     <p>
       <a class="link" href="https://theadroitjournal.org/issue-fifty-one/mackenzie-duan/" target="_blank" rel="noopener noreferrer">Aphelion</a><br>
-      </p>
+    </p>
   </section>
 
   <section id="research">
     <h1>research</h1>
-    <p>Currently assisting Jiali Li with her research on consumer nationalist protests in China.
-    </p>
+    <p>Currently assisting Jiali Li with her research on consumer nationalist protests in China.</p>
   </section>
 
   <section id="projects">
     <h1>projects</h1>
-    <p>Co-directing a play I wrote, slated for November!<br><br>
-Currently working on a story about guns and cars.
-<a class="link" href="/newwork.html" rel="noopener noreferrer">Here's a snippet :3</a>
-</p>
+    <p>
+      Co-directing a play I wrote, slated for November!<br><br>
+      Currently working on a story about guns and cars.
+      <a class="link" href="/newwork.html" rel="noopener noreferrer">Here's a snippet :3</a>
+    </p>
   </section>
 
   <section id="misc">
     <h1>misc</h1>
-    <p>Experimenting with RoBERTa on tweets mentioning Charlie Kirk on September 10<br><br>
-    <a class="link" href="/thesmithsmapping.html">Just how similar are The Smiths songs, really?</a><br><br>
-    Generating text on a GPT-2 model trained on Confessions by Augustine and Rousseau---<a class="link" href="https://twosilks.vercel.app/" target="_blank">try it here!</a><br><br>
-    Crest model test (a little odd, beware)---<a class="link" href="https://crestgenerator.vercel.app/" target="_blank">try it here!</a><br><br>
-    One day I will visit all fifty states
+    <p>
+      Experimenting with RoBERTa on tweets mentioning Charlie Kirk on September 10<br><br>
+      <a class="link" href="/thesmithsmapping.html">Just how similar are The Smiths songs, really?</a><br><br>
+      Generating text on a GPT-2 model trained on Confessions by Augustine and Rousseau—
+      <a class="link" href="https://twosilks.vercel.app/" target="_blank">try it here!</a><br><br>
+      Crest model test (a little odd, beware)—
+      <a class="link" href="https://crestgenerator.vercel.app/" target="_blank">try it here!</a><br><br>
+      One day I will visit all fifty states
     </p>
   </section>
 
@@ -156,6 +183,10 @@ Currently working on a story about guns and cars.
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+    }
+
+    function tapGlass() {
+      window.location.href = "/sharkpage.html"; // make this your custom page
     }
   </script>
 
