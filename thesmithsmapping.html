@@ -4,42 +4,35 @@
   <meta charset="UTF-8">
   <title>the smiths track mapping</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <style>
-    /* 🔧 Responsive root font size — scales with screen width */
-    html {
-      font-size: clamp(1rem, 2vw + 0.2rem, 1.25rem); 
-      /* = min 16px, max ~20px depending on screen */
-    }
-
+  <style>
     body {
-      background-color: white;
       font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: white;
       color: black;
-      margin: 2.5rem;
-      font-size: 0.7rem; /* = 1rem = responsive */
-      font-weight: normal;
     }
 
-       h1 {
-      text-transform: lowercase;
-      font-size: 0.7rem; /* ~24px at max size */
-      font-weight: bold;
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    a.link {
-      color: black;
-      text-decoration: underline;
+    h2 {
+      margin-top: 3rem;
+      font-size: 1.2rem;
     }
 
-    a.link:hover {
-      text-decoration: none;
+    iframe {
+      width: 100%;
+      height: 700px;  /* ⬅️ increase height */
+      border: none;
+      margin-top: 1rem;
     }
-
   </style>
-
+</head>
 <body>
 
-  <h1>the smiths track features---are there really two distinctive clusters of the smiths songs?</h1>
+  <h1>the smiths track features</h1>
 
   <h2>energy</h2>
   <iframe src="energy_strip.html"></iframe>
@@ -50,13 +43,8 @@
   <h2>instrumentalness</h2>
   <iframe src="instrumentalness_strip.html"></iframe>
 
-   <h2>mapping similarity of the above three elements on a scatterplot</h2>
-  <iframe src="thesmithsmap.html"></iframe>
-<br>
-  <p>so there are no two distinctive clusters of the smiths songs! although there's definitely a denser region and some outliers ("London," "The Draize Train" etc)</p>
-
-</body>
-</html>
+  <h2>acousticness</h2>
+  <iframe src="acousticness_strip.html"></iframe>
 
 </body>
 </html>
