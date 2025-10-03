@@ -8,7 +8,7 @@
   <style>
     /* --- General Styling --- */
     body {
-      background: linear-gradient(135deg, #f7f0ff, #cce7ff); /* pastel gradient for artsy vibe */
+      background-color: #e6f7ff; /* very light blue */
       font-family: "Times New Roman", serif;
       color: #222;
       margin: 2.5rem;
@@ -63,7 +63,7 @@
     .shark-container {
       position: relative;
       margin-top: 1.5rem;
-      height: 100px; /* space for sharks */
+      height: 120px; /* space for sharks */
       overflow: hidden;
     }
 
@@ -73,18 +73,27 @@
       left: 100%;
       width: 80px;
       cursor: pointer;
-      animation: swim 15s linear infinite;
+      animation: swim 15s linear infinite, wiggle 1.5s ease-in-out infinite;
     }
 
     .shark:nth-child(2) {
-      top: 50px;
-      animation-delay: 7s;
-      animation-duration: 18s;
+      top: 60px;
+      animation: swim 18s linear infinite 7s, wiggle 1.8s ease-in-out infinite;
     }
 
+    /* Sharks swim across the screen */
     @keyframes swim {
       from { left: 100%; }
       to { left: -120px; }
+    }
+
+    /* Wiggle effect to simulate swimming */
+    @keyframes wiggle {
+      0%   { transform: rotate(0deg) translateY(0); }
+      25%  { transform: rotate(2deg) translateY(2px); }
+      50%  { transform: rotate(0deg) translateY(0); }
+      75%  { transform: rotate(-2deg) translateY(-2px); }
+      100% { transform: rotate(0deg) translateY(0); }
     }
 
     .tap-glass {
@@ -186,7 +195,7 @@
     }
 
     function tapGlass() {
-      window.location.href = "/sharkpage.html"; // make this your custom page
+      window.location.href = "/sharkpage.html"; // your custom page
     }
   </script>
 
