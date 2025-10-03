@@ -59,38 +59,12 @@
       line-height: 1.4;
     }
 
-    /* --- Tank + Glass --- */
-    .tank {
-      position: relative;
-      width: 100%;
-      height: 120px;
-      overflow: hidden;
-      border: 4px solid rgba(200,200,255,0.6); /* faint tank frame */
-      border-radius: 8px;
-      background-color: rgba(255,255,255,0.1); /* frosted glass effect */
-      box-shadow: inset 0 0 15px rgba(255,255,255,0.2); /* inner glow for glass */
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-
-    /* Reflection for glass */
-    .tank::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -50%;
-      width: 200%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%);
-      transform: rotate(-15deg);
-      pointer-events: none; /* clicks go to tank */
-    }
-
-    /* Sharks moving across the tank */
+    /* --- Shark Animation --- */
     .shark-container {
       position: relative;
-      width: 100%;
-      height: 100%;
+      margin-top: 1.5rem;
+      height: 120px; /* space for sharks */
+      overflow: hidden;
     }
 
     .shark {
@@ -98,25 +72,34 @@
       top: 20px;
       left: 100%;
       width: 80px;
-      animation: swim 15s linear infinite;
+      cursor: pointer;
+      animation: swim 15s linear infinite, wiggle 1.5s ease-in-out infinite;
     }
 
     .shark:nth-child(2) {
       top: 60px;
-      animation: swim 18s linear infinite 7s;
+      animation: swim 18s linear infinite 7s, wiggle 1.8s ease-in-out infinite;
     }
 
+    /* Sharks swim across the screen */
     @keyframes swim {
       from { left: 100%; }
       to { left: -120px; }
     }
 
+    /* Wiggle effect to simulate swimming */
+    @keyframes wiggle {
+      0%   { transform: rotate(0deg) translateY(0); }
+      25%  { transform: rotate(2deg) translateY(2px); }
+      50%  { transform: rotate(0deg) translateY(0); }
+      75%  { transform: rotate(-2deg) translateY(-2px); }
+      100% { transform: rotate(0deg) translateY(0); }
+    }
+
     .tap-glass {
-      position: absolute;
-      bottom: 5px;
-      right: 10px;
       font-size: 0.8rem;
       color: #333;
+      margin-top: 0.5rem;
       font-style: italic;
     }
   </style>
@@ -143,14 +126,12 @@
       <a class="link" href="https://letterboxd.com/meikanjian/" target="_blank" rel="noopener noreferrer">My Letterboxd :)</a>
     </p>
 
-    <!-- Aquarium Tank -->
-    <div class="tank" onclick="tapGlass()">
-      <div class="shark-container">
-        <img src="shark.png" alt="shark" class="shark">
-        <img src="shark.png" alt="shark" class="shark">
-      </div>
-      <div class="tap-glass">tap the glass</div>
+    <!-- Sharks -->
+    <div class="shark-container">
+      <img src="shark.png" alt="shark" class="shark" onclick="tapGlass()">
+      <img src="shark.png" alt="shark" class="shark" onclick="tapGlass()">
     </div>
+    <div class="tap-glass">you can tap them through the glass</div>
   </section>
 
   <section id="writing">
@@ -214,7 +195,7 @@
     }
 
     function tapGlass() {
-      window.location.href = "/sharkpage.html"; // link to your shark page
+      window.location.href = "/sharkpage.html"; // your custom page
     }
   </script>
 
