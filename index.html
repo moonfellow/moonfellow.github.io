@@ -142,8 +142,11 @@
 
     <!-- Sharks -->
     <div class="shark-container">
-      <img src="images/shark.png" alt="shark" class="shark" onclick="tapGlass()">
-      <img src="images/shark.png" alt="shark" class="shark" onclick="tapGlass()">
+      <img src="images/shark.png" alt="shark" class="shark" onclick="tapGlass('/secret.html')">
+      <img src="images/shark.png" alt="shark" class="shark" onclick="tapGlass('/secret.html')">
+      <img src="images/shark2.png" alt="shark" class="shark" onclick="tapGlass('/shirakawa.html')">
+      <img src="images/shark2.png" alt="shark" class="shark" onclick="tapGlass('/shirakawa.html')">
+    </div>
     </div>
     <div class="tap-glass">you can tap them through the glass</div>
   </section>
@@ -204,8 +207,8 @@
       document.getElementById(id).classList.add('active');
     }
 
-    function tapGlass() {
-      window.location.href = "/secret.html"; // your custom page
+    function tapGlass(url) {
+      window.location.href = url;
     }
   </script>
 
