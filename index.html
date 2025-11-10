@@ -63,30 +63,43 @@
     .shark-container {
       position: relative;
       margin-top: 1.5rem;
-      height: 120px; /* space for sharks */
+      height: 120px;
       overflow: hidden;
     }
-
+    
+    /* base shark style */
     .shark {
       position: absolute;
       top: 20px;
-      left: 100%;
       width: 80px;
       cursor: pointer;
       animation: swim 15s linear infinite, wiggle 1.5s ease-in-out infinite;
     }
-
-    .shark:nth-child(2) {
-      top: 60px;
-      animation: swim 18s linear infinite 7s, wiggle 1.8s ease-in-out infinite;
+    
+    /* horizontal offsets + animation delays */
+    .shark:nth-child(1) {
+      left: 100%;
+      animation-delay: 0s, 0s;
     }
-
-    /* Sharks swim across the screen */
+    .shark:nth-child(2) {
+      left: 120%;
+      animation-delay: 3s, 0s;
+    }
+    .shark:nth-child(3) {
+      left: 140%;
+      animation-delay: 6s, 0s;
+    }
+    .shark:nth-child(4) {
+      left: 160%;
+      animation-delay: 9s, 0s;
+    }
+    
+    /* swim animation */
     @keyframes swim {
       from { left: 100%; }
       to { left: -120px; }
     }
-
+    
     .tap-glass {
       font-size: 0.8rem;
       color: #333;
