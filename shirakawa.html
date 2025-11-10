@@ -6,40 +6,50 @@
 <title>emperor shirakawa, his son, his son's son, and his son's son's son</title>
 <style>
   body {
-    background: #1b1b1b;
-    color: #f5f2e7;
-    font-family: "Garamond", serif;
-    padding: 2rem;
+    background-color: #e6f7ff; /* light blue background */
+    color: #222;
+    font-family: "Times New Roman", serif;
+    padding: 2.5rem;
     max-width: 600px;
     margin: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
-  #game {
-    background: #2b2b2b;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 0 10px #000;
+
+  h1 {
+    text-transform: lowercase;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
   }
+
+  #dialogue {
+    margin-bottom: 1.5rem;
+  }
+
   #choices button {
-    background: #5a1e1e;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 8px;
-    border-radius: 8px;
+    background: transparent;
+    border: 1px solid #005577;
+    color: #005577;
+    font-family: "Times New Roman", serif;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    margin: 0.4rem 0.4rem 0 0;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s;
+    text-transform: lowercase;
+    transition: all 0.2s ease;
   }
+
   #choices button:hover {
-    background: #7a2e2e;
+    background-color: #005577;
+    color: #fff;
   }
 </style>
 </head>
 <body>
-  <div id="game">
-    <h1>Rift of the Chrysanthemum</h1>
-    <p id="dialogue"></p>
-    <div id="choices"></div>
-  </div>
+  <h1>emperor shirakawa, his son, his son's son, and his son's son's son</h1>
+  <p id="dialogue"></p>
+  <div id="choices"></div>
 
   <script>
     const scenes = {
@@ -68,53 +78,4 @@
       marriage: {
         text: "the ceremony is beautiful, and you enjoy their laughter. you enjoy it too much. rumors spread that your affection for taikenmon’in is improper.",
         choices: [
-          { text: "execute the gossipmongers.", next: "end" },
-          { text: "ignore the whispers.", next: "ignore" }
-        ]
-      },
-      ignore: {
-        text: "taikenmon'in gives birth to a son named sutoku. he has wide, unblinking, familiar eyes. you shiver. you remain silent. some claim that the child is not toba's but yours.",
-        choices: [
-          { text: "speak to toba. assure him these are lies", next: "lie" },
-          { text: "do not speak to toba.", next: "sutoku" }
-        ]
-      },
-      lie: {
-        text: "toba does not believe you. he begins to resent sutoku, who has become emperor. to oppose him, toba begins to back the fujiwara family.",
-        choices: [
-          { text: "a facttional split emerges within the imperial court.", next: "end" }
-        ]
-      },
-      sutoku: {
-        text: "unable to deny the rumors, toba is devastated. his son is, in fact, his uncle. the boy he raised has become a stranger. he allies with the fujiwara to oppose now-emperor sutoku.",
-        choices: [
-          { text: "a facttional split emerges within the imperial court.", next: "end" }
-        ]
-      },
-      end: {
-        text: "the rift is unbearable. war erupts.",
-        choices: [
-          { text: "play again", next: "start" }
-        ]
-      }
-    };
-
-    const dialogue = document.getElementById("dialogue");
-    const choices = document.getElementById("choices");
-
-    function showScene(name) {
-      const scene = scenes[name];
-      dialogue.textContent = scene.text;
-      choices.innerHTML = "";
-      scene.choices.forEach(choice => {
-        const button = document.createElement("button");
-        button.textContent = choice.text;
-        button.onclick = () => showScene(choice.next);
-        choices.appendChild(button);
-      });
-    }
-
-    showScene("start");
-  </script>
-</body>
-</html>
+          { text: "execute the gossipmongers.
