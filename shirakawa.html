@@ -7,7 +7,7 @@
 <style>
   body {
     background-color: #e6f7ff; /* light blue background */
-    color: #222;
+    color: #222; /* readable dark gray */
     font-family: "Times New Roman", serif;
     padding: 2.5rem;
     max-width: 600px;
@@ -78,4 +78,54 @@
       marriage: {
         text: "the ceremony is beautiful, and you enjoy their laughter. you enjoy it too much. rumors spread that your affection for taikenmon’in is improper.",
         choices: [
-          { text: "execute the gossipmongers.
+          { text: "execute the gossipmongers.", next: "end" },
+          { text: "ignore the whispers.", next: "ignore" }
+        ]
+      },
+      ignore: {
+        text: "taikenmon'in gives birth to a son named sutoku. he has wide, unblinking, familiar eyes. you shiver. you remain silent. some claim that the child is not toba's but yours.",
+        choices: [
+          { text: "speak to toba. assure him these are lies.", next: "lie" },
+          { text: "do not speak to toba.", next: "sutoku" }
+        ]
+      },
+      lie: {
+        text: "toba does not believe you. he begins to resent sutoku, who has become emperor. to oppose him, toba begins to back the fujiwara family.",
+        choices: [
+          { text: "a factional split emerges within the imperial court.", next: "end" }
+        ]
+      },
+      sutoku: {
+        text: "unable to deny the rumors, toba is devastated. his son is, in fact, his uncle. the boy he raised has become a stranger. he allies with the fujiwara to oppose now-emperor sutoku.",
+        choices: [
+          { text: "a factional split emerges within the imperial court.", next: "end" }
+        ]
+      },
+      end: {
+        text: "the rift is unbearable. war erupts.",
+        choices: [
+          { text: "play again", next: "start" }
+        ]
+      }
+    };
+
+    const dialogue = document.getElementById("dialogue");
+    const choices = document.getElementById("choices");
+
+    function showScene(name) {
+      const scene = scenes[name];
+      dialogue.textContent = scene.text;
+      choices.innerHTML = "";
+      scene.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.textContent = choice.text;
+        button.onclick = () => showScene(choice.next);
+        choices.appendChild(button);
+      });
+    }
+
+    // Start the game
+    showScene("start");
+  </script>
+</body>
+</html>
