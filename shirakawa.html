@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rift of the Chrysanthemum</title>
+<style>
+  body {
+    background: #1b1b1b;
+    color: #f5f2e7;
+    font-family: "Garamond", serif;
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+  }
+  #game {
+    background: #2b2b2b;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px #000;
+  }
+  #choices button {
+    background: #5a1e1e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  #choices button:hover {
+    background: #7a2e2e;
+  }
+</style>
+</head>
+<body>
+  <div id="game">
+    <h1>Rift of the Chrysanthemum</h1>
+    <p id="dialogue"></p>
+    <div id="choices"></div>
+  </div>
+
+  <script>
+    const scenes = {
+      start: {
+        text: "You are Emperor Shirakawa. The court bows before you, but your son Horikawa grows restless for the throne.",
+        choices: [
+          { text: "Let Horikawa rule — honor above all.", next: "honor" },
+          { text: "Force him to resign — power must remain in my grasp.", next: "power" }
+        ]
+      },
+      honor: {
+        text: "Horikawa rules... but you see the Fujiwara whisper in his ear. Your influence wanes.",
+        choices: [
+          { text: "Arrange a marriage between Toba and Taikenmon’in.", next: "marriage" }
+        ]
+      },
+      power: {
+        text: "Horikawa bows before your will. The throne remains in your shadow. Yet resentment brews.",
+        choices: [
+          { text: "Marry Toba to Fujiwara no Taikenmon’in — consolidate power.", next: "marriage" }
+        ]
+      },
+      marriage: {
+        text: "The union is made. Yet whispers spread — your affection for Taikenmon’in crosses imperial boundaries.",
+        choices: [
+          { text: "Silence the rumors. Power demands sacrifice.", next: "rumors" },
+          { text: "Let the whispers fade — time will reveal truth.", next: "fade" }
+        ]
+      },
+      rumors: {
+        text: "Years pass. Sutoku is born. The court questions his blood. Is he your grandson... or your son?",
+        choices: [
+          { text: "Acknowledge him as rightful heir.", next: "sutoku" },
+          { text: "Support Toba’s child instead.", next: "toba" }
+        ]
+      },
+      fade: {
+        text: "Rumors fade, but Toba’s heart darkens. When Sutoku rises, resentment ignites the empire.",
+        choices: [
+          { text: "Prepare for the inevitable war.", next: "war" }
+        ]
+      },
+      sutoku: {
+        text: "Sutoku ascends. Toba, consumed by rage, allies with the Fujiwara. The empire splits.",
+        choices: [
+          { text: "The Chrysanthemum bleeds — civil war begins.", next: "end" }
+        ]
+      },
+      toba: {
+        text: "You side with Toba. Sutoku is cast aside. But whispers of betrayal fuel a rebellion.",
+        choices: [
+          { text: "No emperor escapes fate.", next: "end" }
+        ]
+      },
+      war: {
+        text: "The Hōgen Rebellion erupts. The rift within the imperial line becomes unhealable.",
+        choices: [
+          { text: "History remembers the name Shirakawa.", next: "end" }
+        ]
+      },
+      end: {
+        text: "Your dynasty stands — or burns — by your hand. The Chrysanthemum Throne has never known peace.",
+        choices: [
+          { text: "Play again", next: "start" }
+        ]
+      }
+    };
+
+    const dialogue = document.getElementById("dialogue");
+    const choices = document.getElementById("choices");
+
+    function showScene(name) {
+      const scene = scenes[name];
+      dialogue.textContent = scene.text;
+      choices.innerHTML = "";
+      scene.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.textContent = choice.text;
+        button.onclick = () => showScene(choice.next);
+        choices.appendChild(button);
+      });
+    }
+
+    showScene("start");
+  </script>
+</body>
+</html>
