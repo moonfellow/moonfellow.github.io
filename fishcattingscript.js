@@ -274,7 +274,7 @@ const articles = [
   },
  {
     title: "Captain Marvel",
-categories: = [
+categories: [
   "Characters",
   "Killed by Michael Rossi (Earth-616)",
   "Killed by Progenitor (Celestial) (Multiverse)",
@@ -346,7 +346,7 @@ categories: = [
   },
   {
     title: "Thor",
- categories: = [
+ categories: [
   "Characters",
   "Thor Corps (Earth-616)/Members",
   "Avengers (Earth-616)/Members",
