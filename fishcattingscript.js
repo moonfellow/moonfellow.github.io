@@ -709,6 +709,7 @@ categories: [
   {
     title: "Black Widow",
     categories: [
+  "Characters",
   "Advanced Idea Mechanics (Earth-616)/Members",
   "Underground (Secret Empire) (Earth-616)/Members",
   "Red Room (Secret Empire) (Earth-616)/Members",
