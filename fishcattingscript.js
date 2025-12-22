@@ -23,6 +23,8 @@ const article = articles[Math.floor(Math.random() * articles.length)];
 
 const categoriesDiv = document.getElementById("categories");
 
+categoriesDiv.textContent = article.categories.join(" | ");
+
 article.categories.forEach(cat => {
   const p = document.createElement("p");
   p.textContent = "• " + cat;
@@ -40,10 +42,11 @@ guessBtn.addEventListener("click", () => {
   if (guess === answer) {
     feedback.textContent = "Correct! 🎉";
   } else {
-    feedback.textContent = "Not quite. Try again!";
+    feedback.textContent = "Wrong! The answer was: " + article.title;
   }
 
   guessInput.value = "";
 });
+
 
 
