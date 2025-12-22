@@ -1941,11 +1941,7 @@ const article = articles[Math.floor(Math.random() * articles.length)];
 
 const categoriesDiv = document.getElementById("categories");
 
-article.categories.forEach(cat => {
-  const p = document.createElement("p");
-  p.textContent = "• " + cat;
-  categoriesDiv.textContent = article.categories.join(" | ");
-});
+categoriesDiv.textContent = article.categories.join(" | ");
 
 const guessBtn = document.getElementById("guessBtn");
 const guessInput = document.getElementById("guessInput");
