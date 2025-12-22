@@ -1960,4 +1960,9 @@ guessBtn.addEventListener("click", () => {
   guessInput.value = "";
 });
 
+console.log("articles:", articles);
+console.log("article:", article);
+console.log("categoriesDiv:", categoriesDiv);
+
+
 
