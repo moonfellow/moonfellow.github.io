@@ -202,7 +202,7 @@
     const scenes = {
       start: {
         text: "the year is 1087 in imperial japan. you are emperor shirakawa. the fujiwara family and the court grow increasingly dependent on powerful, violent allies, and you must retain control.",
-        image: "nightattack.jpg",
+        image: "images/shirakawa.jpg",
         choices: [
           { text: "copy your grandfather go-sanjo and abdicate from the throne.", next: "horikawa" },
           { text: "stay in power.", next: "end" }
@@ -210,7 +210,7 @@
       },
       horikawa: {
         text: "your son, four-year-old horikawa, inherits the throne. you reassert the cloistered rule system and rule behind the shadows. but your son grows older. he has a child with the princess consort tokushi. he grows restless.",
-        image: "",
+        image: "images/horikawa.jpg",
         choices: [
           { text: "do nothing.", next: "end" },
           { text: "strangle horikawa while tokushi is asleep.", next: "end" },
@@ -219,7 +219,7 @@
       },
       resign: {
         text: "horikawa resigns, and his son toba ascends to the throne. he is a precocious boy who likes to memorize maps. you are fond of him. soon he comes of age.",
-        image: "",
+        image: "images/toba.jpg",
         choices: [
           { text: "approve his marriage to fujiwara no taikenmon'in, strengthening the ties between the imperial court and the fujiwara family.", next: "marriage" },
           { text: "reject his marriage to fujiwara no taikenmon'in.", next: "end" }
@@ -227,7 +227,7 @@
       },
       marriage: {
         text: "the ceremony is beautiful, and you enjoy their laughter. you enjoy it too much. rumors spread that your affection for taikenmon'in is improper.",
-        image: "",
+        image: "images/taikenmonin.jpg",
         choices: [
           { text: "execute the gossipmongers.", next: "end" },
           { text: "ignore the whispers.", next: "ignore" }
@@ -235,7 +235,7 @@
       },
       ignore: {
         text: "taikenmon'in gives birth to a son named sutoku. he has wide, unblinking, familiar eyes. you shiver. you remain silent. some claim that the child is not toba's but yours.",
-        image: "",
+        image: "images/sutoku.jpg",
         choices: [
           { text: "speak to toba. assure him these are lies.", next: "lie" },
           { text: "do not speak to toba.", next: "sutoku" }
@@ -243,21 +243,21 @@
       },
       lie: {
         text: "toba does not believe you. he begins to resent sutoku, who has become emperor. to oppose him, toba begins to back the fujiwara family.",
-        image: "", // Add image URL here
+        image: "images/fujiwara.jpg",
         choices: [
           { text: "a factional split emerges within the imperial court.", next: "end" }
         ]
       },
       sutoku: {
         text: "unable to deny the rumors, toba is devastated. his son is, in fact, his uncle. the boy he raised has become a stranger. he allies with the fujiwara to oppose now-emperor sutoku.",
-        image: "",
+        image: "images/faction.jpg",
         choices: [
           { text: "a factional split emerges within the imperial court.", next: "end" }
         ]
       },
       end: {
         text: "the rift is unbearable. war erupts.",
-        image: "",
+        image: "images/nightattack.jpg",
         choices: [
           { text: "play again", next: "start" }
         ]
